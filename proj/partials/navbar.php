@@ -34,9 +34,9 @@
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <?php if(isset($_SESSION['user'])): ?>
-        <button type="submit"  class="btn btn-light"><a class="nav-link" href="login.php" style="color: #DAC9A6;">
-        <?= $_SESSION['user']['name'] ?></a>
-        </button>
+        <li class="nav-item active" style="list-style: none; color:goldenrod;">
+            <a class="nav-link" ><?= $_SESSION['user']['name'] ?></a>
+        </li>
         <button type="submit"  class="btn btn-light"><a class="nav-link" href="profile-edit.php" style="color: gray;">編輯個人資料</a>
         </button>
         <button type="submit"  class="btn btn-light"><a class="nav-link" href="logout.php" style="color: gray;">登出</a>
