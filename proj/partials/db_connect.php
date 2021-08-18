@@ -1,7 +1,7 @@
 <?php
 
 $db_host = 'localhost';  // 主機名稱
-$db_name = '24.Micheal';  // 資料庫名稱
+$db_name = 'Micheal';  // 資料庫名稱
 $db_user = 'Micheal';
 $db_pass = 'admin';
 

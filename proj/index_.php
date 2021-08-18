@@ -11,6 +11,21 @@ include __DIR__ . '/partials/init.php';
         background-size: cover;
         
     }
+    .index-logo {
+           width: 100%;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           flex-direction: column;
+           
+       }
+       .index-logo>a{
+           text-decoration: none;
+       }
+       #logo {
+           width:60% ;
+           
+       }
 </style>
 <div class="jumbotron">
     <h1 class="display-4 text-light">Hello, This is Lung² !</h1>

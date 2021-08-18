@@ -15,21 +15,7 @@
 
     <style>
 
-       .index-logo {
-           width: 100%;
-           display: flex;
-           justify-content: center;
-           align-items: center;
-           flex-direction: column;
-           
-       }
-       .index-logo>a{
-           text-decoration: none;
-       }
-       #logo {
-           width:60% ;
-           
-       }
+       
     </style>
 </head>
 
