@@ -1,23 +1,11 @@
+
 <?php
-// echo json_encode($_POST, JSON_UNESCAPED_UNICODE);
-
-$output = [
-    'success' => false,
-    'error' => '尚未更動任何資料',
-    'code' => 0,
-    'postData' => $_POST,
-];
+include __DIR__. '/partials/init.php';
 
 
 
-$sql = "INSERT INTO `adopted`(
-    `name`, `breed`, `gender`,
-    `age`,`intro`,`family`,`created_at`
-    ) VALUES (
-        ?,?,?,
-        ?,?,?,NOW()
-    )";
 
+$sql = "INSERT INTO `adopted`( `name`, `breed`, `gender`, `age`,  `family`, `intro`, `district`, `created_at`) VALUES (?,?,?,?,?,?,?,NOW())";
 
 $stmt = $pdo->prepare($sql);
 $stmt->execute([
@@ -26,8 +14,17 @@ $stmt->execute([
     $_POST['breed'],
     $_POST['gender'],
     $_POST['age'],
-    $_POST['intro'],
     $_POST['family'],
-    $_POST['created_at'],
+    $_POST['intro'],
+    $_POST['district'],
     
 ]);
+
+
+
+$output['rowCount'] = $stmt->rowCount();
+if($stmt->rowCount()==1){
+    $output['success'] = true;
+}
+
+echo json_encode($output);

@@ -25,11 +25,11 @@ $isSaved = false;
 
 
 if(! $isSaved){
-    $sql = "UPDATE `members` SET `name`=? WHERE id=?";
+    $sql = "UPDATE `members` SET `name`=? WHERE sid=?";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
         $_POST['name'],
-        $_SESSION['user']['id'],
+        $_SESSION['user']['sid'],
     ]);
 
     if($stmt->rowCount()) {
@@ -41,11 +41,11 @@ if(! $isSaved){
 
 
 if(! $isSaved){
-    $sql = "UPDATE `members` SET `mobile`=? WHERE id=?";
+    $sql = "UPDATE `members` SET `mobile`=? WHERE sid=?";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
         $_POST['mobile'],
-        $_SESSION['user']['id'],
+        $_SESSION['user']['sid'],
     ]);
 
     if($stmt->rowCount()) {
@@ -55,18 +55,5 @@ if(! $isSaved){
     }
 }
 
-if(! $isSaved){
-    $sql = "UPDATE `members` SET `birthday`=? WHERE id=?";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([
-        $_POST['birthday'],
-        $_SESSION['user']['id'],
-    ]);
 
-    if($stmt->rowCount()) {
-        $_SESSION['user']['birthday'] = $_POST['birthday'];
-        $output['error'] = '';
-        $output['success'] = true;
-    }
-}
 echo json_encode($output);

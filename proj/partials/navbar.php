@@ -37,7 +37,7 @@
         <li class="nav-item active" style="list-style: none; color:goldenrod;">
             <a class="nav-link" ><?= $_SESSION['user']['name'] ?></a>
         </li>
-        <button type="submit"  class="btn btn-light"><a class="nav-link" href="profile-edit.php" style="color: gray;">編輯個人資料</a>
+        <button type="submit"  class="btn btn-light"><a class="nav-link" href="profile-edit.php" style="color: gray;">編輯個人<br>寵物資料</a>
         </button>
         <button type="submit"  class="btn btn-light"><a class="nav-link" href="logout.php" style="color: gray;">登出</a>
         </button>

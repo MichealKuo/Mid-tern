@@ -17,11 +17,10 @@ $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 $where = ' WHERE 1 ';
 if (!empty($keyword)) {
     // $where .= " AND `name` LIKE '%{$keyword}%' "; // sql injection 漏洞
-    $where .= sprintf(" AND `family` LIKE %s ", $pdo->quote('%' . $keyword . '%'));
+    $where .= sprintf(" AND `name` LIKE %s ", $pdo->quote('%' . $keyword . '%'));
 
     $qs['keyword'] = $keyword;
 }
-
 
 
 // 總共有幾筆
@@ -72,6 +71,7 @@ if ($totalRows != 0) {
 
 
     }
+
     .card-text {
         color: #656765;
     }
@@ -102,6 +102,20 @@ if ($totalRows != 0) {
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">刊登日期：<?= $r['created_at'] ?></small>
+                            <div class="func d-flex justify-content-end">
+                                <div class="del p-2">
+                                    <a href="data-del.php?sid=<?= $r['sid'] ?>" style="color: gray;text-decoration:none"
+                                    onclick="return confirm('確定要刪除編號 <?= $r['sid']?>的資料嗎？')">
+                                        <i class="far fa-trash-alt"></i>
+                                    </a>
+                                </div>
+                                <div class="edit p-2">
+                                    <a href="data-edit.php?sid=<?= $r['sid'] ?>" style="color: gray; text-decoration:none">
+                                        <i class="far fa-edit"></i>
+                                    </a>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -146,4 +160,7 @@ if ($totalRows != 0) {
 
 
 <?php include __DIR__ . '/partials/scripts.php'; ?>
+
+
+
 <?php include __DIR__ . '/partials/html-foot.php'; ?>

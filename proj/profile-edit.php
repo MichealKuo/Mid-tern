@@ -11,7 +11,7 @@
     }
 
 
-    $sql = "SELECT * FROM `members` WHERE id=". intval($_SESSION['user']['id']);
+    $sql = "SELECT * FROM `members` WHERE sid=". intval($_SESSION['user']['sid']);
 
     $r = $pdo->query($sql)->fetch();
 
@@ -53,12 +53,7 @@
                                    value="<?= htmlentities($r['mobile']) ?>">
                             <small class="form-text "></small>
                         </div>
-                        <div class="form-group">
-                            <label for="name">Birthday</label>
-                            <input type="date" class="form-control" id="birthday" name="birthday"
-                                   value="<?= htmlentities($r['birthday']) ?>">
-                            <small class="form-text "></small>
-                        </div>
+                        
 
                         <button type="submit" class="btn btn-primary">修改</button>
                         <button type="button" class="btn btn-primary" onclick="location.href='pet-data-insert.php'">新增寵物認養資料</button>

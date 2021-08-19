@@ -1,38 +1,62 @@
-
-
 <?php
 include __DIR__. '/partials/init.php'; 
-
 header('Content-Type: application/json');
 
 
-if (isset($_POST['create'])){
-    include __DIR__. '../proj/partials/db_connect.php'; 
-    function validate($data){
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    }
-    $name = validate($_POST['name']);
-    $email = validate($_POST['email']);
-    
-    $user_data = 'name='.$name. 'email='.$email;
 
-    if(empty($name)){
-        header("Location:../create-member.php?error=Name is required&$user_data");
-    }else if (empty($email)){
-        header("Location:../create-member.php?error=Email is required&$user_data");
-    }else {
-       $sql = "INSERT INTO users(name, email) VALUES('$name', '$email')";
-       $result = mysqli_query($pdo, $sql );
-       if ($result) {
-           echo "success";
-       }else {
-            header("Location:../create-member.php?error=unknown error occurred&$user_data");
-       }
-    }
+$output = [
+    'success' => false,
+    'error' => '',
+    'code' => 0,
+    'rowCount' => 0,
+    'postData' => $_POST,
+];
+
+
+if(strlen($_POST['name'])<2){
+    $output['error'] = '姓名長度太短';
+    $output['code'] = '410';
+
+    echo json_encode($output);
+    exit;
+
+}
+if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+    $output['error'] = 'email 格式錯誤';
+    $output['code'] = 420;
+
+    echo json_encode($output);
+    exit;
+
 }
 
+$sql = "INSERT INTO `members`(`avatar`, `name`, `email`, `password`, `mobile`, `birthday`, `hash`, `create_at`) VALUES (
+                    ?,?,?,?,
+                    ?,?,?, NOW()
+
+)";
+
+    
+//只要資料是由用戶端傳送進來 一律使用prepare
+
+$stmt = $pdo->prepare($sql);
+$stmt->execute([
+    $_POST['avatar'],
+    $_POST['name'],
+    $_POST['email'],
+    $_POST['password'],
+    $_POST['birthday'],
+    $_POST['mobile'],
+    $_POST['birthday'],
+    $_POST['hash'],
+    
+
+]);
 
 
+$output['rowCount'] = $stmt->rowCount();
+if($stmt->rowCount()==1){
+    $output['success'] = true;
+}
+
+echo json_encode($output);

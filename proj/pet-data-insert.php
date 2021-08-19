@@ -1,20 +1,15 @@
 <?php
-    include __DIR__. '/partials/init.php';
-    $title = '新增資料';
-    $row = [
-        "breed" => "0",
-        "gender" => "0",
-        "age" => "0",
-    ];
+include __DIR__ . '/partials/init.php';
+$title = '新增資料';
+$row = [
+    "breed" => "0",
+    "gender" => "0",
+    "age" => "0",
+];
 ?>
-<?php include __DIR__. '/partials/html-head.php'; ?>
-<?php include __DIR__. '/partials/navbar.php'; ?>
-    <style>
-        form .form-group small {
-            color: red;
-        }
+<?php include __DIR__ . '/partials/html-head.php'; ?>
+<?php include __DIR__ . '/partials/navbar.php'; ?>
 
-    </style>
 <div class="container">
     <div class="row">
         <div class="col-md-6">
@@ -22,59 +17,50 @@
                 <div class="card-body">
                     <h5 class="card-title">新增寵物資料</h5>
 
-                    <form name="form1" onsubmit="checkForm(); return false;" action="pet-data-insert-api.php">
+                    <form name="form1" onsubmit="checkForm(); return false;">
                         <div class="form-group">
-                            <label for="nickname">別名 *</label>
-                            <input type="text" class="form-control" id="nickname" name="nickname">
+                            <label for="name">別名*</label>
+                            <input type="text" class="form-control" id="name" name="name">
                             <small class="form-text "></small>
                         </div>
                         <div class="form-group">
-                        <label for="cat-breed">品種</label>
-                        <select class="form-control" id="cat-breed" name="breed">
-                            <option value="" disabled selected>-- 請選擇... --</option>
-                            <option value="1" <?= $row['breed']==1 ? 'selected' : '' ?>>米克斯</option>
-                            <option value="2" <?= $row['breed']==2 ? 'selected' : '' ?>>英國短毛</option>
-                            <option value="3" <?= $row['breed']==3 ? 'selected' : '' ?>>蘇格蘭摺耳</option>
-                            <option value="4" <?= $row['breed']==4 ? 'selected' : '' ?>>布偶</option>
-                            <option value="5" <?= $row['breed']==5 ? 'selected' : '' ?>>波斯</option>
-                        </select>
+                            <label for="breed">品種</label>
+                            <input type="text" class="form-control" id="breed" name="breed" placeholder="米克斯/英國短毛/台灣土狗/柴犬">
+                            <small class="form-text "></small>
                         </div>
                         <div class="form-group">
-                        <label for="cat-gender">性別</label>
-                        <select class="form-control" id="cat-gender" name="gender">
-                            <option value="" disabled selected>-- 請選擇... --</option>
-                            <option value="1" <?= $row['gender']==1 ? 'selected' : '' ?>>male</option>
-                            <option value="2" <?= $row['gender']==2 ? 'selected' : '' ?>>female</option>
-                        </select>
+                            <label for="gender">gender</label>
+                            <input type="text" class="form-control" id="gender" name="gender"placeholder="male/female">
+                            <small class="form-text "></small>
                         </div>
                         <div class="form-group">
-                        <label for="cat-age">年齡</label>
-                        <select class="form-control" id="cat-age" name="age">
-                            <option value="" disabled selected>-- 請選擇... --</option>
-                            <option value="1" <?= $row['age']==1 ? 'selected' : '' ?>>成年</option>
-                            <option value="2" <?= $row['age']==2 ? 'selected' : '' ?>>幼年</option>
-                        </select>
-                        </div>
-                        <div class="form-group d-flex" style="flex-direction: column;">
-                            <label for="intro">寵物描述</label>
-                            <textarea name="intro" id="intro" cols="50" rows="3" style="border-radius: 0.3rem; border:1px solid #BDC0BA"></textarea>
+                            <label for="Age">Age</label>
+                            <input type="text" class="form-control" id="Age" name="Age"placeholder="成年/幼年">
+                            
+                            <small class="form-text "></small>
                         </div>
                         <div class="form-group">
-                            <label for="avatar">寵物大頭貼</label>
-                            <input type="file" class="form-control" id="avatar" name="avatar" accept="image/*" multiple>
-                            <?php if(empty( $r['avatar'])): ?>
-                                <!-- 預設的大頭貼 -->
-                            <?php else: ?>
-                                <!-- 顯示原本的大頭貼 -->
-                                <img src="imgs/<?= $r['avatar'] ?>" alt="" width="300px">
-                            <?php endif; ?>
-
+                            <label for="family">科別</label>
+                            <input type="text" class="form-control" id="family" name="family"placeholder="貓科/犬科">
+                            <small class="form-text "></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="intro">描述</label>
+                            <input type="text" class="form-control" id="intro" name="intro">
+                            <small class="form-text "></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="district">區域</label>
+                            <input type="text" class="form-control" id="district" name="district"
+                            placeholder="台北/新北/台中">
+                            <small class="form-text "></small>
                         </div>
 
-                        <button type="button" class="btn btn-primary" onclick="location.href='data-list.php'" >Create</button>
+                        <button type="submit" class="btn btn-primary">Create</button>
                     </form>
 
 
+                   
                 </div>
             </div>
         </div>
@@ -82,32 +68,30 @@
 
 
 </div>
-<?php include __DIR__. '/partials/scripts.php'; ?>
+<?php include __DIR__ . '/partials/scripts.php'; ?>
 <script>
+    function checkForm() {
 
-   
-function checkForm(){
-
-            const fd = new FormData(document.form1);
-            fetch('pet-data-insert-api.php', {
+        const fd = new FormData(document.form1);
+        fetch('pet-data-insert-api.php', {
                 method: 'POST',
                 body: fd
             })
-                .then(r=>r.json())
-                .then(obj=>{
-                    console.log(obj);
-                    if(obj.success){
-                        alert('修改成功');
-                    } else {
-                        alert(obj.error);
-                    }
-                })
-                .catch(error=>{
-                    console.log('error:', error);
-                });
+            .then(r => r.json())
+            .then(obj => {
+                console.log(obj);
+                if (obj.success) {
+                    location.href = 'data-list.php';
+                    alert("建立成功")
+                } else {
+                    alert(obj.error);
+                }
+            })
 
-
+            .catch(error => {
+                console.log('error:', error);
+            });
     }
 </script>
-<?php include __DIR__. '/partials/html-foot.php'; ?>
+<?php include __DIR__ . '/partials/html-foot.php'; ?>
 <!-- //可以把他分成4部分 在利用include __Dir__合併在php頁成現 -->
