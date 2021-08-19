@@ -71,8 +71,7 @@
 <script>
 
     function checkForm(){
-// 欄位的外觀要回復原來的狀態
-            //上傳一定要用FormData 和 post
+
             const fd = new FormData(document.form1);
             fetch('profile-edit-api.php', {
                 method: 'POST',
@@ -82,6 +81,7 @@
                 .then(obj=>{
                     console.log(obj);
                     if(obj.success){
+                        location.href = 'data-list.php'
                         alert('修改成功');
                     } else {
                         alert(obj.error);

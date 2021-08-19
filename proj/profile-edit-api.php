@@ -13,10 +13,10 @@ $output = [
 ];
 
 
-if(empty($_POST['name'])){
-    echo json_encode($output);
-    exit;
-}
+// if(empty($_POST['name'])){
+//     echo json_encode($output);
+//     exit;
+// }
 
 // 預設是沒有上傳資料，沒有上傳成功
 $isSaved = false;

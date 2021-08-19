@@ -1,5 +1,5 @@
 <?php
-include __DIR__. '/partials/init.php';
+include __DIR__ . '/partials/init.php';
 
 header('Content-Type: application/json');
 
@@ -11,46 +11,58 @@ $output = [
     'postData' => $_POST,
 ];
 
-// 練習題解答：避免直接拜訪時的錯誤訊息
+
 if(
-    empty($_POST['sid']) or
+    
     empty($_POST['name']) or
+    empty($_POST['breed']) or
     empty($_POST['gender']) or
     empty($_POST['age']) or
     empty($_POST['family']) or
-    empty($_POST['intro'])
+    empty($_POST['intro'])or
+    empty($_POST['district'])or
+    empty($_POST['avatar'])or
+    empty($_POST['created_at'])
 ){
     echo json_encode($output);
     exit;
 }
 
 
-
-
-
 $sql = "UPDATE `adopted` SET 
                           `name`=?,
+                          `breed`=?,
                           `gender`=?,
                           `age`=?,
                           `family`=?,
-                          `intro`=?
+                          `intro`=?,
+                          `district`=?,
+                          `avatar`=?,
+                          
+
                           WHERE `sid`=?";
 
 $stmt = $pdo->prepare($sql);
-$stmt->execute([
+$stmt ->execute([
     $_POST['name'],
+    $_POST['breed'],
     $_POST['gender'],
     $_POST['age'],
     $_POST['family'],
     $_POST['intro'],
-    $_POST['sid'],
+    $_POST['district'],
+    $_POST['avatar'],
+  
+    
+    
+
 ]);
 
-$output['rowCount'] = $stmt->rowCount(); // 修改的筆數
+$output['rowCount'] = $stmt->rowCount();
 if($stmt->rowCount()==1){
     $output['success'] = true;
     $output['error'] = '';
-} else {
+}else {
     $output['error'] = '資料沒有修改';
 }
 

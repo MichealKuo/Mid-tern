@@ -30,18 +30,18 @@ $row = [
                         </div>
                         <div class="form-group">
                             <label for="gender">gender</label>
-                            <input type="text" class="form-control" id="gender" name="gender"placeholder="male/female">
+                            <input type="text" class="form-control" id="gender" name="gender" placeholder="male/female">
                             <small class="form-text "></small>
                         </div>
                         <div class="form-group">
-                            <label for="Age">Age</label>
-                            <input type="text" class="form-control" id="Age" name="Age"placeholder="成年/幼年">
-                            
+                            <label for="age">年齡</label>
+                            <input type="text" class="form-control" id="age" name="age" placeholder="成年/幼年">
+
                             <small class="form-text "></small>
                         </div>
                         <div class="form-group">
                             <label for="family">科別</label>
-                            <input type="text" class="form-control" id="family" name="family"placeholder="貓科/犬科">
+                            <input type="text" class="form-control" id="family" name="family" placeholder="貓科/犬科">
                             <small class="form-text "></small>
                         </div>
                         <div class="form-group">
@@ -51,8 +51,7 @@ $row = [
                         </div>
                         <div class="form-group">
                             <label for="district">區域</label>
-                            <input type="text" class="form-control" id="district" name="district"
-                            placeholder="台北/新北/台中">
+                            <input type="text" class="form-control" id="district" name="district" placeholder="台北/新北/台中">
                             <small class="form-text "></small>
                         </div>
 
@@ -60,7 +59,7 @@ $row = [
                     </form>
 
 
-                   
+
                 </div>
             </div>
         </div>
@@ -81,17 +80,17 @@ $row = [
             .then(obj => {
                 console.log(obj);
                 if (obj.success) {
-                    location.href = 'data-list.php';
-                    alert("建立成功")
+                    location.href = 'data-list.php'
+                    alert('新增成功');
                 } else {
                     alert(obj.error);
                 }
             })
-
             .catch(error => {
                 console.log('error:', error);
             });
+
+
     }
 </script>
 <?php include __DIR__ . '/partials/html-foot.php'; ?>
-<!-- //可以把他分成4部分 在利用include __Dir__合併在php頁成現 -->
