@@ -67,14 +67,16 @@ if ($totalRows != 0) {
     .card-deck {
         margin: 3rem 0;
         width: 25%;
-        height: 500px;
+        height: 600px;
 
 
     }
 
     .card-text {
         color: #656765;
+        
     }
+   
 </style>
 <div class="container">
     <div class="row mt-5">
@@ -94,11 +96,11 @@ if ($totalRows != 0) {
                         <img src="imgs/<?= $r['avatar'] ?>" class="card-img-top" alt="..." width="300px">
 
                         <div class="card-body">
-                            <h3 class="card-title"><?= $r['name'] ?></h3>
+                            <h3 class="card-title" style="font-weight: 500;"><?= $r['name'] ?></h3>
                             <p class="card-text">科別：<?= ($r['family']) ?></p>
                             <p class="card-text">性別：<?= ($r['gender']) ?></p>
                             <p class="card-text">品種：<?= ($r['breed']) ?></p>
-                            <p class="card-text">描述：<?= ($r['intro']) ?></p>
+                            <p class="card-text" style="letter-spacing: 0.3rem;color:gray;font-size:0.9rem;font-weight: 200">描述：<?= ($r['intro']) ?></p>
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">刊登日期：<?= $r['created_at'] ?></small>
