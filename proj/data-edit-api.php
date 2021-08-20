@@ -20,9 +20,8 @@ if(
     empty($_POST['age']) or
     empty($_POST['family']) or
     empty($_POST['intro'])or
-    empty($_POST['district'])or
-    empty($_POST['avatar'])or
-    empty($_POST['created_at'])
+    empty($_POST['district'])
+    
 ){
     echo json_encode($output);
     exit;
@@ -36,14 +35,15 @@ $sql = "UPDATE `adopted` SET
                           `age`=?,
                           `family`=?,
                           `intro`=?,
-                          `district`=?,
-                          `avatar`=?,
+                          `district`=?
+                          
                           
 
                           WHERE `sid`=?";
 
 $stmt = $pdo->prepare($sql);
-$stmt ->execute([
+$stmt->execute([
+    
     $_POST['name'],
     $_POST['breed'],
     $_POST['gender'],
@@ -51,11 +51,7 @@ $stmt ->execute([
     $_POST['family'],
     $_POST['intro'],
     $_POST['district'],
-    $_POST['avatar'],
-  
-    
-    
-
+    $_POST['sid'],
 ]);
 
 $output['rowCount'] = $stmt->rowCount();

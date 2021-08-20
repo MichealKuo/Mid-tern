@@ -1,28 +1,22 @@
 <?php
-    include __DIR__. '/partials/init.php';
-    $title = '修改資料';
+include __DIR__ . '/partials/init.php';
+$title = '修改資料';
 
-    $sid = isset($_GET['sid']) ? intval($_GET['sid']) : 0;
+$sid = isset($_GET['sid']) ? intval($_GET['sid']) : 0;
 
-    $sql = "SELECT * FROM `adopted` WHERE sid=$sid";
+$sql = "SELECT * FROM `adopted` WHERE sid=$sid";
 
-//    echo $sql; exit;
 
-    $r = $pdo->query($sql)->fetch();
-    //$pdo->query($sql) 只是拿到代理物件 必須再利用fetch去拿資料
-    if(empty($r)){
-        header('Location: data-list.php');
-        exit;
-    }
-    // echo json_encode($r, JSON_UNESCAPED_UNICODE);
+
+$r = $pdo->query($sql)->fetch();
+
 ?>
-<?php include __DIR__. '/partials/html-head.php'; ?>
-<?php include __DIR__. '/partials/navbar.php'; ?>
+<?php include __DIR__ . '/partials/html-head.php'; ?>
+<?php include __DIR__ . '/partials/navbar.php'; ?>
 <style>
     form .form-group small {
         color: red;
     }
-    
 </style>
 <div class="container">
     <div class="row">
@@ -35,45 +29,38 @@
                         <input type="hidden" name="sid" value="<?= $r['sid'] ?>">
                         <div class="form-group">
                             <label for="name">姓名 *</label>
-                            <input type="text" class="form-control" id="name" name="name"
-                                value="<?= htmlentities($r['name']) ?>">
+                            <input type="text" class="form-control" id="name" name="name" value="<?= htmlentities($r['name']) ?>">
                             <small class="form-text "></small>
                         </div>
                         <div class="form-group">
                             <label for="breed">種類</label>
-                            <input type="text" class="form-control" id="breed" name="breed"
-                                   value="<?= htmlentities($r['breed']) ?>">
+                            <input type="text" class="form-control" id="breed" name="breed" value="<?= htmlentities($r['breed']) ?>">
                             <small class="form-text "></small>
                         </div>
                         <div class="form-group">
                             <label for="gender">性別</label>
-                            <input type="text" class="form-control" id="gender" name="gender"
-                                   value="<?= htmlentities($r['gender']) ?>">
+                            <input type="text" class="form-control" id="gender" name="gender" value="<?= htmlentities($r['gender']) ?>">
                             <small class="form-text "></small>
                         </div>
                         <div class="form-group">
                             <label for="age">birthday</label>
-                            <input type="text" class="form-control" id="age" name="age"
-                                   value="<?= htmlentities($r['age']) ?>">
+                            <input type="text" class="form-control" id="age" name="age" value="<?= htmlentities($r['age']) ?>">
                             <small class="form-text "></small>
                         </div>
                         <div class="form-group">
                             <label for="family">科別</label>
-                            <input type="text" class="form-control" id="family" name="family"
-                                   value="<?= htmlentities($r['family']) ?>">
+                            <input type="text" class="form-control" id="family" name="family" value="<?= htmlentities($r['family']) ?>">
                             <small class="form-text "></small>
                         </div>
                         <div class="form-group">
                             <label for="intro">描述</label>
-                            <!--  -->
-                            <textarea class="form-control" id="intro" name="intro" cols="30" rows="3"
-                                ><?= htmlentities($r['intro']) ?></textarea>
+                         
+                            <textarea class="form-control" id="intro" name="intro" cols="30" rows="3"><?= htmlentities($r['intro']) ?></textarea>
                             <small class="form-text "></small>
                         </div>
                         <div class="form-group">
                             <label for="district">區域</label>
-                            <input type="text" class="form-control" id="district" name="district"
-                                   value="<?= htmlentities($r['district']) ?>">
+                            <input type="text" class="form-control" id="district" name="district" value="<?= htmlentities($r['district']) ?>">
                             <small class="form-text "></small>
                         </div>
                         <button type="submit" class="btn btn-primary">修改</button>
@@ -87,33 +74,30 @@
 
 
 </div>
-<?php include __DIR__. '/partials/scripts.php'; ?>
+<?php include __DIR__ . '/partials/scripts.php'; ?>
 <script>
+    function checkForm() {
 
-
-function checkForm(){
-// 欄位的外觀要回復原來的狀態
-            //上傳一定要用FormData 和 post
-            const fd = new FormData(document.form1);
-            fetch('data-edit-api.php', {
+        const fd = new FormData(document.form1);
+        fetch('data-edit-api.php', {
                 method: 'POST',
                 body: fd
             })
-                .then(r=>r.json())
-                .then(obj=>{
-                    console.log(obj);
-                    if(obj.success){
-                        location.href = 'data-list.php'
-                        alert('修改成功');
-                    } else {
-                        alert(obj.error);
-                    }
-                })
-                .catch(error=>{
-                    console.log('error:', error);
-                });
+            .then(r => r.json())
+            .then(obj => {
+                console.log(obj);
+                if (obj.success) {
+                    location.href = 'data-list.php';
+                     alert('修改成功');
+                } else {
+                    alert(obj.error);
+                }
+            })
+            .catch(error => {
+                console.log('error:', error);
+            });
 
 
     }
 </script>
-<?php include __DIR__. '/partials/html-foot.php'; ?>
+<?php include __DIR__ . '/partials/html-foot.php'; ?>
