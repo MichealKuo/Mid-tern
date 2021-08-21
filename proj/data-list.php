@@ -104,7 +104,15 @@ if ($totalRows != 0) {
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">刊登日期：<?= $r['created_at'] ?></small>
-                            <div class="func d-flex justify-content-end">
+                            <div class="func-btn d-flex justify-content-between">
+                                <div class="follow">
+                                    <div class="like-btn p-2">
+                                        <a href="" style="color: red;text-decoration:none">
+                                        <i class="fas fa-heart"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="func d-flex">
                                 <div class="del p-2">
                                     <a href="data-del.php?sid=<?= $r['sid'] ?>" style="color: gray;text-decoration:none"
                                     onclick="return confirm('確定要刪除編號 <?= $r['sid']?>的資料嗎？')">
@@ -118,6 +126,8 @@ if ($totalRows != 0) {
                                 </div>
                             </div>
 
+                            </div>
+                            
                         </div>
                     </div>
                 <?php endforeach; ?>

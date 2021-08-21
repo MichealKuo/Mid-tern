@@ -1,11 +1,8 @@
 <?php
 include __DIR__ . '/partials/init.php';
 $title = '新增資料';
-$row = [
-    "breed" => "0",
-    "gender" => "0",
-    "age" => "0",
-];
+
+
 ?>
 <?php include __DIR__ . '/partials/html-head.php'; ?>
 <?php include __DIR__ . '/partials/navbar.php'; ?>
@@ -16,7 +13,6 @@ $row = [
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">新增寵物資料</h5>
-
                     <form name="form1" onsubmit="checkForm(); return false;">
                         <div class="form-group">
                             <label for="name">別名*</label>
@@ -57,9 +53,6 @@ $row = [
 
                         <button type="submit" class="btn btn-primary">Create</button>
                     </form>
-
-
-
                 </div>
             </div>
         </div>
