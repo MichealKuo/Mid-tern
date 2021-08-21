@@ -95,7 +95,7 @@ if ($totalRows != 0) {
                     <li class="page-item <?= $page <= 1 ? 'disabled' : '' ?>">
                         <a class="page-link" href="?<?php $qs['page'] = $page - 1;
                                                     echo http_build_query($qs); ?>">
-                            <i class="fas fa-arrow-circle-left"></i>｀
+                            <i class="fas fa-arrow-circle-left"></i>
                         </a>
                     </li>
 
@@ -126,7 +126,7 @@ if ($totalRows != 0) {
                 <?php foreach ($rows as $r) : ?>
                     <div class="card p-2" data-sid="<?= $r['sid'] ?>" style="border-radius: 10px;">
 
-                        <img src="imgs/<?= $r['avatar'] ?>" class="card-img-top" alt="..." style="width: 300px; height:300px;object-fit:cover">
+                        <img src="imgs/<?= $r['avatar'] ?>" class="card-img-top" alt="..." style="width: 100%; height:300px;object-fit:cover">
 
                         <div class="card-body">
                             <h3 class="card-title" style="font-weight: 500;"><?= $r['name'] ?></h3>

@@ -66,11 +66,7 @@ $r = $pdo->query($sql)->fetch();
                         <div class="form-group">
                             <label for="avatar">大頭貼</label>
                             <input type="file" class="form-control" id="avatar" name="avatar" accept="image/*" method="post" enctype="multipart/form-data">
-
-
                             <img src="imgs/ <?= $r['avatar'] ?>" alt="" width="300px">
-
-
                         </div>
                         <button type="submit" class="btn btn-primary">修改</button>
                     </form>
@@ -96,7 +92,7 @@ $r = $pdo->query($sql)->fetch();
             .then(obj => {
                 console.log(obj);
                 if (obj.success) {
-                    location.href = 'data-list.php';
+                    location.href = 'data-list.php'
                     alert('修改成功');
                 } else {
                     alert(obj.error);
