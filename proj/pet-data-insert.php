@@ -50,6 +50,11 @@ $title = '新增資料';
                             <input type="text" class="form-control" id="district" name="district" placeholder="台北/新北/台中">
                             <small class="form-text "></small>
                         </div>
+                        <div class="form-group">
+                            <label for="avatar">大頭貼</label>
+                            <input type="file" class="form-control" id="avatar" name="avatar" accept="image/*" method="post" enctype="multipart/form-data">
+                            <img src="imgs/ <?= $r['avatar'] ?>" alt="" width="300px">
+                        </div>
 
                         <button type="submit" class="btn btn-primary">Create</button>
                     </form>
