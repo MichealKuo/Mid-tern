@@ -54,7 +54,7 @@ $r = $pdo->query($sql)->fetch();
                         </div>
                         <div class="form-group">
                             <label for="intro">描述</label>
-                         
+
                             <textarea class="form-control" id="intro" name="intro" cols="30" rows="3"><?= htmlentities($r['intro']) ?></textarea>
                             <small class="form-text "></small>
                         </div>
@@ -65,12 +65,11 @@ $r = $pdo->query($sql)->fetch();
                         </div>
                         <div class="form-group">
                             <label for="avatar">大頭貼</label>
-                            <input type="file" class="form-control" id="avatar" name="avatar" accept="image/*"
-                            method="post" enctype="multipart/form-data">
-                           
-                               
-                                <img src="imgs/ <?= $r['avatar'] ?>" alt="" width="300px">
-                           
+                            <input type="file" class="form-control" id="avatar" name="avatar" accept="image/*" method="post" enctype="multipart/form-data">
+
+
+                            <img src="imgs/ <?= $r['avatar'] ?>" alt="" width="300px">
+
 
                         </div>
                         <button type="submit" class="btn btn-primary">修改</button>
@@ -98,7 +97,7 @@ $r = $pdo->query($sql)->fetch();
                 console.log(obj);
                 if (obj.success) {
                     location.href = 'data-list.php';
-                     alert('修改成功');
+                    alert('修改成功');
                 } else {
                     alert(obj.error);
                 }
