@@ -26,14 +26,14 @@ if (
     exit;
 }
 
-$folder = __DIR__ . '/imgs/';
+$img_upload_path = "imgs/";
 
 //允許的檔案類型
 $imgTypes = [
     'image/jpeg' => '.jpg',
     'image/png' => '.png',
 ];
-$isSaved = false;
+
 
 if (!empty($_FILES) and !empty($_FILES['avatar'])) {
     //$_FILES['avatar']['type']現在上傳的檔案是什麼把他對應到imgtype
@@ -46,7 +46,7 @@ if (!empty($_FILES) and !empty($_FILES['avatar'])) {
         //sha1( $_FILES['avatar']['name']. rand())主檔名  $ext 副檔名
         if (move_uploaded_file(
             $_FILES['avatar']['tmp_name'],
-            $folder. $filename
+            $img_upload_path.$filename
             //可以上傳檔案  檔案類型符合條件  把檔案搬到
         ))  ;
        

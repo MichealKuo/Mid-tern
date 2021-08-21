@@ -79,7 +79,7 @@ if ($totalRows != 0) {
    
 </style>
 <div class="container">
-    <div class="row mt-5">
+    <div class="row mt-4 mb-2">
         <div class="col">
             <form action="data-list.php" class="form-inline my-2 my-lg-0 d-flex justify-content-end">
                 <input class="form-control mr-sm-2" type="search" name="keyword" placeholder="Search" value="<?= htmlentities($keyword) ?>" aria-label="Search">
@@ -88,12 +88,45 @@ if ($totalRows != 0) {
         </div>
     </div>
     <div class="row">
+        <div class="col">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination d-flex justify-content-end">
+
+                    <li class="page-item <?= $page <= 1 ? 'disabled' : '' ?>">
+                        <a class="page-link" href="?<?php $qs['page'] = $page - 1;
+                                                    echo http_build_query($qs); ?>">
+                            <i class="fas fa-arrow-circle-left"></i>｀
+                        </a>
+                    </li>
+
+                    <?php for ($i = $page - 5; $i <= $page + 5; $i++) :
+                        if ($i >= 1 and $i <= $totalPages) :
+                            $qs['page'] = $i;
+                    ?>
+                            <li class="page-item <?= $i == $page ? 'active' : '' ?>">
+                                <a class="page-link" href="?<?= http_build_query($qs) ?>"><?= $i ?></a>
+                            </li>
+                    <?php endif;
+                    endfor; ?>
+
+                    <li class="page-item <?= $page >= $totalPages ? 'disabled' : '' ?>">
+                        <a class="page-link" href="?<?php $qs['page'] = $page + 1;
+                                                    echo http_build_query($qs); ?>">
+                            <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+    <div class="row">
         <div class="content">
             <div class="card-deck col-lg-12 col-12">
                 <?php foreach ($rows as $r) : ?>
-                    <div class="card" data-sid="<?= $r['sid'] ?>" style="border-radius: 10px;">
+                    <div class="card p-2" data-sid="<?= $r['sid'] ?>" style="border-radius: 10px;">
 
-                        <img src="imgs/<?= $r['avatar'] ?>" class="card-img-top" alt="..." width="300px">
+                        <img src="imgs/<?= $r['avatar'] ?>" class="card-img-top" alt="..." style="width: 300px; height:300px;object-fit:cover">
 
                         <div class="card-body">
                             <h3 class="card-title" style="font-weight: 500;"><?= $r['name'] ?></h3>
@@ -134,39 +167,7 @@ if ($totalRows != 0) {
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col">
-            <nav aria-label="Page navigation example">
-                <ul class="pagination d-flex justify-content-end">
 
-                    <li class="page-item <?= $page <= 1 ? 'disabled' : '' ?>">
-                        <a class="page-link" href="?<?php $qs['page'] = $page - 1;
-                                                    echo http_build_query($qs); ?>">
-                            <i class="fas fa-arrow-circle-left"></i>
-                        </a>
-                    </li>
-
-                    <?php for ($i = $page - 5; $i <= $page + 5; $i++) :
-                        if ($i >= 1 and $i <= $totalPages) :
-                            $qs['page'] = $i;
-                    ?>
-                            <li class="page-item <?= $i == $page ? 'active' : '' ?>">
-                                <a class="page-link" href="?<?= http_build_query($qs) ?>"><?= $i ?></a>
-                            </li>
-                    <?php endif;
-                    endfor; ?>
-
-                    <li class="page-item <?= $page >= $totalPages ? 'disabled' : '' ?>">
-                        <a class="page-link" href="?<?php $qs['page'] = $page + 1;
-                                                    echo http_build_query($qs); ?>">
-                            <i class="fas fa-arrow-circle-right"></i>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-
-        </div>
-    </div>
 </div>
 
 
