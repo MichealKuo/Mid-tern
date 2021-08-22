@@ -14,7 +14,7 @@
           <a class="nav-link" href="#"></a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="./data-list.php">認養浪浪<span class="sr-only"></span></a>
+          <a class="nav-link" href="./adopted-data-list.php">認養浪浪<span class="sr-only"></span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#"></a>
@@ -37,14 +37,14 @@
         <li class="nav-item active" style="list-style: none; color:goldenrod;">
             <a class="nav-link" ><?= $_SESSION['user']['name'] ?></a>
         </li>
-        <button type="submit"  class="btn btn-light"><a class="nav-link" href="profile-edit.php" style="color: gray; width:200px;">編輯個人 / 寵物資料</a>
+        <button type="submit"  class="btn btn-light"><a class="nav-link" href="adopted-profile-edit.php" style="color: gray; width:200px;">編輯個人 / 寵物資料</a>
         </button>
-        <button type="submit"  class="btn btn-light"><a class="nav-link" href="logout.php" style="color: gray;">登出</a>
+        <button type="submit"  class="btn btn-light"><a class="nav-link" href="adopted-logout.php" style="color: gray;">登出</a>
         </button>
         <?php else: ?>
-        <button type="submit"  class="btn btn-light"><a class="nav-link" href="login.php" style="color: gray;">登入</a>
+        <button type="submit"  class="btn btn-light"><a class="nav-link" href="adopted-login.php" style="color: gray;">登入</a>
         </button>
-        <button type="submit"  class="btn btn-light"><a class="nav-link" href="create-member.php" style="color: gray;">註冊</a>
+        <button type="submit"  class="btn btn-light"><a class="nav-link" href="adopted-create-member.php" style="color: gray;">註冊</a>
         </button>
         
         <?php endif; ?>

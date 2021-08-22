@@ -38,7 +38,7 @@ include __DIR__ . '/partials/init.php';
     <br>
     <br>
     <br>
-    <a class="btn btn-secondary btn-lg" href="data-list.php" role="button">Adopt Pets</a>
+    <a class="btn btn-secondary btn-lg" href="adopted-data-list.php" role="button">Adopt Pets</a>
 </div>
 <?php include __DIR__ . '/partials/scripts.php'; ?>
 <?php include __DIR__ . '/partials/html-foot.php'; ?>

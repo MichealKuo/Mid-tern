@@ -13,7 +13,7 @@ if(! empty($sid)){
 if(isset($_SERVER['HTTP_REFERER'])){
     header("Location: ". $_SERVER['HTTP_REFERER']);
 } else {
-    header('Location: data-list.php');
+    header('Location: adopted-data-list.php');
 }
 
 

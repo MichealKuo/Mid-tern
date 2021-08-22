@@ -70,7 +70,7 @@ $title = '新增資料';
     function checkForm() {
 
         const fd = new FormData(document.form1);
-        fetch('pet-data-insert-api.php', {
+        fetch('adopted-pet-data-insert-api.php', {
                 method: 'POST',
                 body: fd
             })
@@ -78,7 +78,7 @@ $title = '新增資料';
             .then(obj => {
                 console.log(obj);
                 if (obj.success) {
-                    location.href = 'data-list.php'
+                    location.href = 'adopted-data-list.php'
                     alert('新增成功');
                 } else {
                     alert(obj.error);

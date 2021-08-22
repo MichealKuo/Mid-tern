@@ -147,13 +147,13 @@ if ($totalRows != 0) {
                                 </div>
                                 <div class="func d-flex">
                                 <div class="del p-2">
-                                    <a href="data-del.php?sid=<?= $r['sid'] ?>" style="color: gray;text-decoration:none"
+                                    <a href="adopted-data-del.php?sid=<?= $r['sid'] ?>" style="color: gray;text-decoration:none"
                                     onclick="return confirm('確定要刪除編號 <?= $r['sid']?>的資料嗎？')">
                                         <i class="far fa-trash-alt"></i>
                                     </a>
                                 </div>
                                 <div class="edit p-2">
-                                    <a href="data-edit.php?sid=<?= $r['sid'] ?>" style="color: gray; text-decoration:none">
+                                    <a href="adopted-data-edit.php?sid=<?= $r['sid'] ?>" style="color: gray; text-decoration:none">
                                         <i class="far fa-edit"></i>
                                     </a>
                                 </div>

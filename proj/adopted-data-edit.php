@@ -91,7 +91,7 @@ $r = $pdo->query($sql)->fetch();
     function checkForm() {
 
         const fd = new FormData(document.form1);
-        fetch('data-edit-api.php', {
+        fetch('adopted-data-edit-api.php', {
                 method: 'POST',
                 body: fd
             })
@@ -99,7 +99,7 @@ $r = $pdo->query($sql)->fetch();
             .then(obj => {
                 console.log(obj);
                 if (obj.success) {
-                    location.href = 'data-list.php'
+                    location.href = 'adopted-data-list.php'
                     alert('修改成功');
                 } else {
                     alert(obj.error);

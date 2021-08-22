@@ -56,7 +56,7 @@
                         
 
                         <button type="submit" class="btn btn-primary">修改</button>
-                        <button type="button" class="btn btn-primary" onclick="location.href='pet-data-insert.php'">新增寵物認養資料</button>
+                        <button type="button" class="btn btn-primary" onclick="location.href='adopted-pet-data-insert.php'">新增寵物認養資料</button>
                     </form>
 
 
@@ -73,7 +73,7 @@
     function checkForm(){
 
             const fd = new FormData(document.form1);
-            fetch('profile-edit-api.php', {
+            fetch('adopted-profile-edit-api.php', {
                 method: 'POST',
                 body: fd
             })
@@ -81,7 +81,7 @@
                 .then(obj=>{
                     console.log(obj);
                     if(obj.success){
-                        location.href = 'data-list.php'
+                        location.href = 'adopted-data-list.php'
                         alert('修改成功');
                     } else {
                         alert(obj.error);

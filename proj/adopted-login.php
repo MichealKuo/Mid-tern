@@ -55,7 +55,7 @@
         if(isPass) {
             const fd = new FormData(document.form1);
 
-            fetch('login-api.php', {
+            fetch('adopted-login-api.php', {
                 method: 'POST',
                 body: fd ,
             })
@@ -63,7 +63,7 @@
             .then(obj=>{
                 console.log('result:', obj);
                 if(obj.success){
-                    location.href = 'data-list.php'; 
+                    location.href = 'adopted-data-list.php'; 
                     // 如果成功 跳轉到index_.php的頁面
                 } else {
                     alert(obj.error);
