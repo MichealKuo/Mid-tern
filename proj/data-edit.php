@@ -18,6 +18,7 @@ $r = $pdo->query($sql)->fetch();
         color: red;
     }
 </style>
+
 <div class="container">
     <div class="row">
         <div class="col-md-6">

@@ -1,15 +1,9 @@
-<pre>
 <?php
 include __DIR__ . '/partials/init.php';
 
+// header('Content-Type: application/json');
 
-$output = [
-    'success' => false,
-    'error' => '資料輸入異常',
-    'code' => 0,
-    'rowCount' => 0,
-    'postData' => $_POST,
-];
+$img_upload_path = "imgs/";
 if (
 
     empty($_POST['name']) or
@@ -25,7 +19,7 @@ if (
     exit;
 }
 
-$img_upload_path = "imgs/";
+
 
 //允許的檔案類型
 $imgTypes = [
@@ -49,11 +43,7 @@ if (!empty($_FILES) and !empty($_FILES['avatar'])) {
             //可以上傳檔案  檔案類型符合條件  把檔案搬到
         ))  ;
        
-    }
-        
-            
-           
-        
+    }  
     
 }
 
@@ -85,16 +75,9 @@ $stmt->execute([
     $filename,
     $_POST['sid'],
 ]);
-
 $output['rowCount'] = $stmt->rowCount();
-if ($stmt->rowCount() == 1) {
+if($stmt->rowCount()==1){
     $output['success'] = true;
-    $output['error'] = '';
-} else {
-    $output['error'] = '資料沒有修改';
 }
 
 echo json_encode($output);
-
-?>
-</pre>

@@ -4,7 +4,20 @@ include __DIR__. '/partials/init.php';
 
 
 $img_upload_path = "imgs/";
+if (
 
+    empty($_POST['name']) or
+    empty($_POST['breed']) or
+    empty($_POST['gender']) or
+    empty($_POST['age']) or
+    empty($_POST['family']) or
+    empty($_POST['intro']) or
+    empty($_POST['district'])
+
+) {
+    echo json_encode($output);
+    exit;
+}
 //允許的檔案類型
 $imgTypes = [
     'image/jpeg' => '.jpg',
